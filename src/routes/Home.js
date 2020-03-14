@@ -48,14 +48,14 @@ const Loading = styled.div`
 	margin-top: 10px;
 `;
 
-const Movies = styled.div`
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	grid-gap: 25px;
-	width: 60%;
-	position: relative;
-	top: -50px;
-`;
+// const Movies = styled.div`
+// 	display: grid;
+// 	grid-template-columns: repeat(4, 1fr);
+// 	grid-gap: 25px;
+// 	width: 60%;
+// 	position: relative;
+// 	top: -50px;
+// `;
 
 export default () => {
 	const { loading, data } = useQuery(GET_MOVIES);
