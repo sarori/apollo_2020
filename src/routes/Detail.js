@@ -5,13 +5,17 @@ import { useQuery } from "@apollo/react-hooks";
 import styled from "styled-components";
 
 const GET_MOVIE = gql`
-	query getMovie($id: Int!) {
+	query getMovie($id: String!) {
 		movie(id: $id) {
 			title
 			language
 			rating
 			medium_cover_image
-			description_intro
+			summary
+		}
+		suggestions(id: $id) {
+			id
+			medium_cover_image
 		}
 	}
 `;
@@ -59,6 +63,11 @@ export default () => {
 	const { loading, data } = useQuery(GET_MOVIE, {
 		variables: { id }
 	});
+
+	console.log(data);
+	if (!data || !data.movie) {
+		return <div>hello</div>;
+	}
 	return (
 		<Container>
 			<Column>
@@ -68,9 +77,7 @@ export default () => {
 						<Subtitle>
 							{data.movie.language} * {data.movie.rating}
 						</Subtitle>
-						<Description>
-							{data.movie.description_intro}
-						</Description>
+						<Description>{data.movie.summary}</Description>
 					</>
 				)}
 			</Column>
