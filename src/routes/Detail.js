@@ -65,6 +65,7 @@ export default () => {
 	});
 
 	console.log(data);
+	// console.log(data.suggestions);
 	if (!data || !data.movie) {
 		return <div>hello</div>;
 	}
@@ -82,7 +83,11 @@ export default () => {
 				)}
 			</Column>
 			<Poster
-				bg={data && data.movie ? data.movie.medium_cover_image : ""}
+				bg={
+					data && data.movie
+						? data.movie.medium_cover_image
+						: "https://www.topstarnews.net/news/photo/201907/644455_344076_333.jpg"
+				}
 			></Poster>
 		</Container>
 	);
